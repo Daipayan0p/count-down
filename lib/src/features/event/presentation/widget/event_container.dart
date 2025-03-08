@@ -1,58 +1,114 @@
-import 'package:count_down/src/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EventContainer extends StatelessWidget {
   const EventContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-        color: AppColor.eventBackground,
-        borderRadius: BorderRadius.circular(10),
+    final theme = Theme.of(context);
+
+    return Dismissible(
+      key: UniqueKey(),
+      onDismissed: (direction) {
+        // Handle the delete action here
+        // For example, you can call a function to remove the item from a list
+      },
+      background: Container(
+        decoration: BoxDecoration(
+          color: Colors.red.shade500,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Row(
+          children: [
+            const Spacer(),
+            const Icon(Icons.delete, color: Colors.white),
+            SizedBox(width: 8.w),
+            const Text(
+              'Delete',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
-      width: double.infinity,
-      height: 70,
-      child: Row(
-        children: [
-          /// Front Part ///
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(16.h),
+          child: Row(
             children: [
-              Text(
-                "12",
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+              // Days Counter
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "12",
+                      style: theme.textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      "days",
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        color:
+                            theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Text(
-                "days",
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(),
-              )
-            ],
-          ),
+              SizedBox(width: 24.w),
 
-          const SizedBox(width: 30,),
-          /// Second Part ///
-
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "New Event",
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+              // Event Details
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "New Event",
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      "04/08/24",
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color:
+                            theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Text(
-                "04/08/24",
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(),
-              )
+
+              // Actions
+              IconButton(
+                onPressed: () {
+                  // Handle the edit action here
+                  // For example, navigate to an edit screen or open a dialog
+                },
+                icon: Icon(
+                  Icons.edit,
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                ),
+              ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
