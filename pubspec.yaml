@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_screenutil: any
   fpdart: any
+  home_widget: any
   go_router: any
   dio: any
   supabase_flutter: ^2.8.4

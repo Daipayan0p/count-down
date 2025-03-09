@@ -1,8 +1,24 @@
+import 'package:count_down/src/features/event/domain/models/event_model.dart';
+import 'package:count_down/src/features/event/presentation/widget/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+int daysUntil(DateTime futureDate) {
+  DateTime today = DateTime.now();
+  DateTime start =
+      DateTime(today.year, today.month, today.day); // Normalize today
+  DateTime end = DateTime(futureDate.year, futureDate.month,
+      futureDate.day); // Normalize future date
+
+  return end.difference(start).inDays;
+}
+
 class EventContainer extends StatelessWidget {
-  const EventContainer({super.key});
+  const EventContainer(
+      {super.key, required this.event, required this.onDismissed});
+
+  final Function() onDismissed;
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +27,7 @@ class EventContainer extends StatelessWidget {
     return Dismissible(
       key: UniqueKey(),
       onDismissed: (direction) {
+        onDismissed();
         // Handle the delete action here
         // For example, you can call a function to remove the item from a list
       },
@@ -52,7 +69,7 @@ class EventContainer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "12",
+                      "${daysUntil(event.dateTime)}",
                       style: theme.textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: theme.colorScheme.primary,
@@ -78,14 +95,14 @@ class EventContainer extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "New Event",
+                      event.title,
                       style: theme.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 4.h),
                     Text(
-                      "04/08/24",
+                      formatDate(event.dateTime),
                       style: theme.textTheme.titleMedium?.copyWith(
                         color:
                             theme.colorScheme.onSurface.withValues(alpha: 0.7),
@@ -96,16 +113,16 @@ class EventContainer extends StatelessWidget {
               ),
 
               // Actions
-              IconButton(
-                onPressed: () {
-                  // Handle the edit action here
-                  // For example, navigate to an edit screen or open a dialog
-                },
-                icon: Icon(
-                  Icons.edit,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                ),
-              ),
+              // IconButton(
+              //   onPressed: () {
+              //     // Handle the edit action here
+              //     // For example, navigate to an edit screen or open a dialog
+              //   },
+              //   icon: Icon(
+              //     Icons.edit,
+              //     color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+              //   ),
+              // ),
             ],
           ),
         ),

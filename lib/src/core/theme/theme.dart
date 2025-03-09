@@ -61,7 +61,7 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   appBarTheme: AppBarTheme(
     elevation: 0,
-    backgroundColor: Colors.white,
+    backgroundColor: const Color(0xFFF8F9FA),
     foregroundColor: const Color(0xFF2D3436),
     titleTextStyle: _baseTextTheme.titleLarge?.copyWith(
       color: const Color(0xFF2D3436),

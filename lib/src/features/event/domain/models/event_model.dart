@@ -11,18 +11,14 @@ class Event extends HiveObject {
   String title;
 
   @HiveField(2)
-  String description;
-
-  @HiveField(3)
   DateTime dateTime;
 
-  @HiveField(4)
+  @HiveField(3)
   bool isCompleted;
 
   Event({
     required this.id,
     required this.title,
-    required this.description,
     required this.dateTime,
     this.isCompleted = false,
   });

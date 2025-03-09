@@ -1,16 +1,18 @@
+import 'package:count_down/src/core/const/keys.dart';
 import 'package:count_down/src/core/router/routes.dart';
 import 'package:count_down/src/core/theme/theme.dart';
+import 'package:count_down/src/features/event/domain/models/event_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'src/features/event/data/services/event_storage_service.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize event storage
-  final eventStorage = EventStorageService();
-  await eventStorage.init();
-
+  await Hive.initFlutter();
+  Hive.registerAdapter(EventAdapter());
+  eventBox = await Hive.openBox<Event>("EventBox");
   runApp(const MyApp());
 }
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         routerConfig: router,
         theme: lightTheme,
         darkTheme: darkTheme,
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
       ),
     );
