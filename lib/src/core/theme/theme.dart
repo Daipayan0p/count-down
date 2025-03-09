@@ -75,7 +75,7 @@ final ThemeData lightTheme = ThemeData.light().copyWith(
     shadowColor: Colors.black.withOpacity(0.1),
   ),
   inputDecorationTheme: _baseInputDecorationTheme.copyWith(
-    fillColor: Colors.grey[100],
+    fillColor: Colors.grey[200]?.withValues(alpha: 0.8),
     hintStyle: TextStyle(color: Colors.grey[500]),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(

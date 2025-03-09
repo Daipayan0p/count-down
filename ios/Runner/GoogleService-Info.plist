@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCRClZ6FsWYUHLLQ7KrBwOsvd66ObDvz3Q</string>
+	<string>AIzaSyDFWzraX_RLBxQaKGN8VKap-RyYmROKO-4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1076955749262</string>
+	<string>617452742965</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.countDown</string>
+	<string>com.daipayan0p1.countDown2</string>
 	<key>PROJECT_ID</key>
-	<string>count-down-6562a</string>
+	<string>count-down-acff8</string>
 	<key>STORAGE_BUCKET</key>
-	<string>count-down-6562a.appspot.com</string>
+	<string>count-down-acff8.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1076955749262:ios:0fbb2099b02ecadce562df</string>
+	<string>1:617452742965:ios:5d0679e3f1ce09d0f4447c</string>
 </dict>
 </plist>

@@ -52,6 +52,7 @@ Future<Event?> showEventPicker(BuildContext context) async {
                 "Create Event",
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onSurface
                 ),
               ),
               SizedBox(height: 15.h),
@@ -74,7 +75,7 @@ Future<Event?> showEventPicker(BuildContext context) async {
                 decoration: const InputDecoration(
                   hintText: "Select Date",
                   border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.calendar_today),
+                  suffixIcon: Icon(Icons.calendar_month_rounded),
                 ),
                 onTap: () async {
                   DateTime? newDate = await showDatePicker(
